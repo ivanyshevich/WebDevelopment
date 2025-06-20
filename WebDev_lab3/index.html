@@ -4,19 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-        content="TechNova — українська ІТ-компанія, яка створює інноваційні веб-та мобільні рішення для бізнесу." />
+        content="TechNova — українська ІТ-компанія, що створює інноваційні веб- та мобільні рішення для бізнесу." />
   <title>TechNova — Інновації, що рухають бізнес</title>
 
-  <!-- Підключення зовнішніх стилів -->
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body id="top">
   <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="container flex between center">
+      <!-- Logo -->
       <a class="logo" href="#top">Tech<span>N</span>ova</a>
 
+      <!-- Burger button (visible ≤600 px) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Перемкнути меню">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Main nav -->
       <nav aria-label="Головна навігація">
         <ul class="main-nav flex gap-sm" role="list">
           <li><a href="#about">Про нас</a></li>
@@ -28,8 +35,8 @@
     </div>
   </header>
 
-  <!-- ===== MAIN ===== -->
-  <main id="top">
+  <!-- ===== MAIN CONTENT ===== -->
+  <main>
     <!-- HERO -->
     <section class="hero" role="banner">
       <div class="container hero-content">
@@ -43,20 +50,20 @@
     <article id="about" class="container about">
       <h2>Про компанію</h2>
       <p>
-        <strong>TechNova</strong> — команда інженерів, дизайнерів та бізнес-аналітиків,
-        що із 2015 року створює комплексні ІТ-рішення для стартапів і корпорацій.
-        Наша місія — допомагати клієнтам проходити цифрову трансформацію та
-        розкривати потенціал їхніх ідей.
+        <strong>TechNova</strong> — команда інженерів, дизайнерів і бізнес-аналітиків,
+        яка з 2015 року створює комплексні цифрові рішення для стартапів і корпорацій.
+        Наша місія — допомагати клієнтам проходити цифрову трансформацію та розкривати
+        потенціал їхніх ідей.
       </p>
 
       <div class="values grid-3">
         <section>
           <h3>Інновації</h3>
-          <p>Ми експериментуємо з AI, Big Data та хмарними технологіями.</p>
+          <p>Експерименти з AI, Big Data та хмарними технологіями.</p>
         </section>
         <section>
           <h3>Якість</h3>
-          <p>60+ успішних проєктів та 98 % повторних замовлень.</p>
+          <p>60+ успішних проєктів і 98 % повторних замовлень.</p>
         </section>
         <section>
           <h3>Партнерство</h3>
@@ -71,27 +78,24 @@
         <h2>Наша команда</h2>
 
         <div class="grid-team">
-          <!-- === Співробітник 1 === -->
           <figure>
-            <img src="img/team/alice.png" alt="Аліса Петрова — CEO" width="400" height="400" loading="lazy" />
+            <img src="img/team/alice.jpg" alt="Аліса Петрова — CEO" width="400" height="400" loading="lazy" />
             <figcaption>
               <h3>Аліса Петрова</h3>
               <p>Chief Executive Officer</p>
             </figcaption>
           </figure>
 
-          <!-- === Співробітник 2 === -->
           <figure>
-            <img src="img/team/bogdan.png" alt="Богдан Іванов — CTO" width="400" height="400" loading="lazy" />
+            <img src="img/team/bogdan.jpg" alt="Богдан Іванов — CTO" width="400" height="400" loading="lazy" />
             <figcaption>
               <h3>Богдан Іванов</h3>
               <p>Chief Technology Officer</p>
             </figcaption>
           </figure>
 
-          <!-- === Співробітник 3 === -->
           <figure>
-            <img src="img/team/olena.png" alt="Олена Коваль — Head of Design" width="400" height="400" loading="lazy" />
+            <img src="img/team/olena.jpg" alt="Олена Коваль — Head of Design" width="400" height="400" loading="lazy" />
             <figcaption>
               <h3>Олена Коваль</h3>
               <p>Head of Design</p>
@@ -108,14 +112,12 @@
       <div class="grid-services">
         <article>
           <h3>Веб-розробка</h3>
-          <p>Front-end та back-end для SaaS-рішень і маркетплейсів.</p>
+          <p>Front-end і back-end для SaaS-рішень та маркетплейсів.</p>
         </article>
-
         <article>
           <h3>Мобільні застосунки</h3>
-          <p>Нативні й кросплатформні (Flutter, React Native).</p>
+          <p>Нативні і кросплатформні рішення (Flutter, React Native).</p>
         </article>
-
         <article>
           <h3>UI/UX-дизайн</h3>
           <p>Дизайн-системи, прототипи, дослідження користувачів.</p>
@@ -129,8 +131,8 @@
     <div class="container flex between wrap footer-content">
       <address>
         <h3>Контакти</h3>
-        <p>м. Київ, вул. ІТ-Hub, 42</p>
-        <p><a href="tel:+380441234567">+38 044 123-45-67</a></p>
+        <p>м.&nbsp;Київ, вул.&nbsp;ІТ-Hub, 42</p>
+        <p><a href="tel:+380441234567">+38&nbsp;044&nbsp;123-45-67</a></p>
         <p><a href="mailto:info@technova.ua">info@technova.ua</a></p>
       </address>
 
@@ -138,9 +140,15 @@
     </div>
   </footer>
 
-  <!-- невеличкий JS для динамічної дати -->
+  <!-- ===== JS ===== -->
   <script>
+    /* Показуємо поточний рік у футері */
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Перемикач бургер-меню */
+    document.getElementById('nav-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('nav-open');
+    });
   </script>
 </body>
 </html>

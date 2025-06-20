@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="TechNova — українська ІТ-компанія, яка створює інноваційні веб-та мобільні рішення для бізнесу." />
+  <title>TechNova — Інновації, що рухають бізнес</title>
+
+  <!-- Підключення зовнішніх стилів -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container flex between center">
+      <a class="logo" href="#top">Tech<span>N</span>ova</a>
+
+      <nav aria-label="Головна навігація">
+        <ul class="main-nav flex gap-sm" role="list">
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#team">Команда</a></li>
+          <li><a href="#services">Послуги</a></li>
+          <li><a href="#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" role="banner">
+      <div class="container hero-content">
+        <h1>Інновації, що рухають бізнес</h1>
+        <p>Перетворюємо ідеї на цифрові продукти, які масштабують ваш успіх.</p>
+        <a class="btn pulse" href="#services">Дізнатись більше</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <article id="about" class="container about">
+      <h2>Про компанію</h2>
+      <p>
+        <strong>TechNova</strong> — команда інженерів, дизайнерів та бізнес-аналітиків,
+        що із 2015 року створює комплексні ІТ-рішення для стартапів і корпорацій.
+        Наша місія — допомагати клієнтам проходити цифрову трансформацію та
+        розкривати потенціал їхніх ідей.
+      </p>
+
+      <div class="values grid-3">
+        <section>
+          <h3>Інновації</h3>
+          <p>Ми експериментуємо з AI, Big Data та хмарними технологіями.</p>
+        </section>
+        <section>
+          <h3>Якість</h3>
+          <p>60+ успішних проєктів та 98 % повторних замовлень.</p>
+        </section>
+        <section>
+          <h3>Партнерство</h3>
+          <p>Прозоре спілкування й довгострокові відносини з клієнтами.</p>
+        </section>
+      </div>
+    </article>
+
+    <!-- TEAM -->
+    <section id="team" class="team">
+      <div class="container">
+        <h2>Наша команда</h2>
+
+        <div class="grid-team">
+          <!-- === Співробітник 1 === -->
+          <figure>
+            <img src="img/team/alice.png" alt="Аліса Петрова — CEO" width="400" height="400" loading="lazy" />
+            <figcaption>
+              <h3>Аліса Петрова</h3>
+              <p>Chief Executive Officer</p>
+            </figcaption>
+          </figure>
+
+          <!-- === Співробітник 2 === -->
+          <figure>
+            <img src="img/team/bogdan.png" alt="Богдан Іванов — CTO" width="400" height="400" loading="lazy" />
+            <figcaption>
+              <h3>Богдан Іванов</h3>
+              <p>Chief Technology Officer</p>
+            </figcaption>
+          </figure>
+
+          <!-- === Співробітник 3 === -->
+          <figure>
+            <img src="img/team/olena.png" alt="Олена Коваль — Head of Design" width="400" height="400" loading="lazy" />
+            <figcaption>
+              <h3>Олена Коваль</h3>
+              <p>Head of Design</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services container">
+      <h2>Послуги</h2>
+
+      <div class="grid-services">
+        <article>
+          <h3>Веб-розробка</h3>
+          <p>Front-end та back-end для SaaS-рішень і маркетплейсів.</p>
+        </article>
+
+        <article>
+          <h3>Мобільні застосунки</h3>
+          <p>Нативні й кросплатформні (Flutter, React Native).</p>
+        </article>
+
+        <article>
+          <h3>UI/UX-дизайн</h3>
+          <p>Дизайн-системи, прототипи, дослідження користувачів.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" id="contacts">
+    <div class="container flex between wrap footer-content">
+      <address>
+        <h3>Контакти</h3>
+        <p>м. Київ, вул. ІТ-Hub, 42</p>
+        <p><a href="tel:+380441234567">+38 044 123-45-67</a></p>
+        <p><a href="mailto:info@technova.ua">info@technova.ua</a></p>
+      </address>
+
+      <p class="copy">© <span id="year"></span> TechNova. Усі права захищені.</p>
+    </div>
+  </footer>
+
+  <!-- невеличкий JS для динамічної дати -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

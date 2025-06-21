@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #000 url("../img/cosmos.jpg") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.scene {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  padding: 100px;
+}
+
+#earth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(30,180,255,.45);
+  z-index: 1;
+  animation: spin-earth 24s linear infinite;
+}
+
+@keyframes spin-earth {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+#moon {
+  position: absolute;
+  top: 250px;
+  left: 250px;
+  width: 110px;
+  z-index: 0;
+  animation:
+    orbita 8s ease-in-out infinite,
+    moon-spin 6s linear infinite,
+    depth 8s ease-in-out infinite;
+}
+
+@keyframes orbita {
+  0% {
+    top: 250px;
+    left: 250px;
+    width: 110px;
+    z-index: 0;
+  }
+  20% {
+    top: 90px;
+    left: 680px;
+    width: 125px;
+    z-index: 2;
+  }
+  40% {
+    top: 360px;
+    left: 320px;
+    width: 130px;
+    z-index: 2;
+  }
+  60% {
+    top: 600px;   
+    left: -80px; 
+    width: 120px;
+    z-index: 0;
+  }
+  100% {
+    top: 250px;
+    left: 250px;
+    width: 110px;
+    z-index: 0;
+  }
+}
+
+@keyframes moon-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes depth {
+  0%, 39.99% { z-index: 2; }
+  40%, 100%  { z-index: 0; }
+}

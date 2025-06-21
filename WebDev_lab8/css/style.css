@@ -1,0 +1,28 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+header .bg-help {
+  background: #003366; color: #fff; padding:1rem 0;
+}
+header .inBox {
+  width: min(95%,1200px); margin:0 auto; text-align:center;
+}
+#logo { font-size:1.8rem; margin-bottom:.5rem; }
+#claim { opacity:.8; }
+main {
+  display:flex; gap:1rem;
+  width: min(95%,1200px); margin:1.5rem auto;
+}
+#side { width:200px; /* для фільтрів */ }
+#nav {
+  flex:1; height:600px;
+  background:#fff; border:1px solid #ccc;
+  overflow-x:auto;
+}
+footer {
+  background:#003366; color:#fff;
+  text-align:center; padding:1rem 0; margin-top:2rem;
+}

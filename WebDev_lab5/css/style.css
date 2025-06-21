@@ -61,10 +61,20 @@ h1, h2, h3 {
    ===================================================== */
 .hero {
   position: relative;
+  /* ширина вікна, зсув ліворуч та праворуч, щоб ніяких білих полів не було */
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* фон банера */
   background: url("../img/hero.jpg") center/cover no-repeat;
   color: #fff;
   text-align: center;
   padding: 6rem 1rem;
+  display: flex;
+  align-items: center;
 }
 .hero::before {
   content: "";
@@ -75,15 +85,6 @@ h1, h2, h3 {
 .hero-content {
   position: relative;
   z-index: 1;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .pulse {
-    animation: pulse 4s infinite;
-  }
-  @keyframes pulse {
-    0%,100% { box-shadow: none; }
-    50%     { box-shadow: 0 0 0 10px rgba(0,102,224,.2); }
-  }
 }
 
 /* =====================================================
@@ -216,5 +217,19 @@ h1, h2, h3 {
 @media (max-width: 600px) {
   .navbar .navbar-toggler {
     display: block;
+  }
+}
+
+/* початкове правило */
+.team img {
+  border-radius: 50%;
+  max-width: 400px;
+  margin: 0 auto 1rem;
+}
+
+/* для планшетів (768–991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .team img {
+    max-width: 280px;  /* зменшуємо щоб ужалося дві в ряд */
   }
 }

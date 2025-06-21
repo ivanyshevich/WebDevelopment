@@ -1,0 +1,220 @@
+/* =====================================================
+   1.  CSS Variables
+   ===================================================== */
+:root {
+  --accent:      #0066e0;
+  --accent-dark: #0055b0;
+  --dark:        #212121;
+  --light:       #f9f9f9;
+  --radius:      .5rem;
+}
+
+/* =====================================================
+   2.  Reset & Base
+   ===================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--dark);
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  margin: 0 0 .6em;
+  line-height: 1.25;
+}
+
+/* =====================================================
+   3.  Header & Navigation
+   ===================================================== */
+.navbar {
+  border-bottom: 1px solid #e5e5e5;
+}
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.nav-link {
+  color: var(--dark);
+  transition: color .2s;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--accent);
+}
+
+/* =====================================================
+   4.  Hero Banner
+   ===================================================== */
+.hero {
+  position: relative;
+  background: url("../img/hero.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1rem;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pulse {
+    animation: pulse 4s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: none; }
+    50%     { box-shadow: 0 0 0 10px rgba(0,102,224,.2); }
+  }
+}
+
+/* =====================================================
+   5.  About Section
+   ===================================================== */
+.about {
+  padding: 4rem 0 2rem;
+}
+.about h2 {
+  font-size: 2rem;
+}
+.about p {
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  color: #444;
+  font-size: 1.05rem;
+}
+.about .card {
+  background-color: #fff;
+  border-radius: var(--radius);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.about .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+.about h3 {
+  color: var(--accent);
+  margin-bottom: .75rem;
+  font-size: 1.25rem;
+}
+
+/* =====================================================
+   6.  Team Section
+   ===================================================== */
+.team {
+  padding: 4rem 0;
+}
+.team img {
+  border-radius: 50%;
+  max-width: 400px;
+  margin: 0 auto 1rem;
+}
+.team h3 {
+  margin-bottom: .25rem;
+}
+
+/* =====================================================
+   7.  Services Section
+   ===================================================== */
+.services {
+  padding: 4rem 0;
+}
+.services .card {
+  border-radius: var(--radius);
+  padding: 1.8rem 1.5rem;
+  transition: transform .25s;
+}
+.services .card:hover {
+  transform: translateY(-4px);
+}
+.services .card img {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+.services .card h5 {
+  margin-top: .75rem;
+  color: var(--dark);
+}
+.services .card p {
+  color: var(--dark);
+}
+
+/* =====================================================
+   8.  Collapse/Fade for About cards
+   ===================================================== */
+.collapse.fade {
+  transition: height .35s ease, opacity .35s ease;
+}
+
+/* =====================================================
+   9.  Footer
+   ===================================================== */
+.site-footer {
+  background: var(--dark);
+  color: #cfcfcf;
+}
+.site-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+.site-footer address {
+  font-style: normal;
+}
+
+/* =====================================================
+   10.  Animations (CSS-only)
+   ===================================================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all .8s ease;
+}
+.fade-right {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: all .8s ease;
+}
+.zoom-in {
+  opacity: 0;
+  transform: scale(.8);
+  transition: all .8s ease;
+}
+.animate.fade-up,
+.animate.fade-right,
+.animate.zoom-in {
+  opacity: 1;
+  transform: none;
+}
+.delay-1 {
+  transition-delay: .15s;
+}
+.delay-2 {
+  transition-delay: .3s;
+}
+
+/* =====================================================
+   11.  Responsive tweaks (≤600px)
+   ===================================================== */
+@media (max-width: 600px) {
+  .navbar .navbar-toggler {
+    display: block;
+  }
+}

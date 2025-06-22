@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Лаб.11: Додаткові можливості — HTML5 Бронювання кімнат</title>
 
-  <link rel="stylesheet" href="http://cdn.daypilot.org/daypilot-all.min.css">
-  <link rel="stylesheet" href="https://cdn.daypilot.org/daypilot-all.min.css">
+  <!-- DayPilot CSS (local copy avoids HTTPS certificate issues) -->
+  <link rel="stylesheet" href="css/daypilot-all.min.css">
 
   <!-- Власні стилі -->
   <link rel="stylesheet" href="css/style.css">

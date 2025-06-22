@@ -1,0 +1,12 @@
+{
+  "name": "lab13-nodejs-server",
+  "version": "1.0.0",
+  "description": "Простий HTTP-сервер на Node.js для лабораторної роботи № 13",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}

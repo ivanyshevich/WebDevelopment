@@ -1,15 +1,22 @@
 <?php
 require_once "_db.php";
 
-// для перевірки GET → POST змінити параметри відповідно
+// Отримуємо від клієнта видимий інтервал
 $start = $_POST['start'];
 $end   = $_POST['end'];
 
-$stmt = $db->prepare("
-  SELECT * 
-    FROM reservations 
-   WHERE NOT ((end <= :start) OR (start >= :end))
-");
+// Витягаємо бронювання та відразу формуємо необхідні поля
+$stmt = $db->prepare(
+    "SELECT id,
+            room_id AS resource,
+            name    AS text,
+            start,
+            end,
+            status,
+            paid
+       FROM reservations
+      WHERE NOT ((end <= :start) OR (start >= :end))"
+);
 $stmt->execute([':start' => $start, ':end' => $end]);
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

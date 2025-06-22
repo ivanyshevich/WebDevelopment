@@ -7,9 +7,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HTML5 Бронювання кімнат в готелі (JS/PHP/MySQL)</title>
-  <!-- DayPilot стилі -->
-  <link rel="stylesheet" href="css/daypilot-all.min.css">
-  <!-- власні стилі -->
+
+  <!-- DayPilot CSS (помістіть daypilot-all.min.css у папку css/) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.daypilot.org/daypilot-all.min.css"
+  />
+
+  <!-- ваші стилі -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -32,13 +37,14 @@
 
   <footer>
     <address>
-      (с)Автор лабораторної роботи: студент спеціальності «Комп'ютерні науки», група: «ІУСТ-2004м», Кривошея І.С.
+      (с)Автор лабораторної роботи: студент спеціальності «Комп'ютерні науки», група «ІУСТ-2004м», Кривошея І.С.
     </address>
   </footer>
 
   <!-- бібліотеки -->
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/daypilot-all.min.js"></script>
+
   <!-- логіка ініціалізації Scheduler + завантаження даних -->
   <script src="js/app.js"></script>
 </body>

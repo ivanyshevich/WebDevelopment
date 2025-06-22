@@ -1,71 +1,62 @@
-// js/app.js
+/* js/app.js
+   Лабораторна № 9 — ініціалізація DayPilot Scheduler
+   -------------------------------------------------- */
 
-$(function() {
-  // 1) Ініціалізуємо DayPilot Scheduler
-  var dp = new DayPilot.Scheduler("nav");
+$(function () {
 
-  // 2) Базові налаштування календаря
-  dp.startDate = DayPilot.Date.today().firstDayOfMonth();
-  dp.days      = dp.startDate.daysInMonth();
-  dp.scale     = "Day";
+  /* 1. Створюємо екземпляр Scheduler у контейнері #nav */
+  const dp = new DayPilot.Scheduler("nav");
 
-  // 3) Задаємо ширину комірки, щоб вміщувалася повна дата
-  dp.cellWidth = 80;
-
-  // 4) Кастомні заголовки: місяць + день у форматі YYYY-MM-DD
+  /* 2. Базові налаштування таймлайна */
+  dp.startDate   = DayPilot.Date.today().firstDayOfMonth();   // початок – 1-ше число поточного місяця
+  dp.days        = dp.startDate.daysInMonth();                // стільки днів, скільки у місяці
+  dp.scale       = "Day";                                     // одна клітинка = 1 день
+  dp.cellWidth   = 80;                                        // ширина комірки, щоб влазила повна дата
   dp.timeHeaders = [
     { groupBy: "Month" },
     { groupBy: "Day", format: "yyyy-MM-dd" }
   ];
 
-  // 5) Ініціалізуємо порожній Scheduler
-  dp.resources     = [];
-  dp.events.list   = [];
-  dp.init();
+  /* 3. Обробники дій користувача (клік та створення) */
+  dp.onTimeRangeSelected = function (args) {
+    const url = `new.php?start=${args.start}&end=${args.end}&resource=${args.resource}`;
+    window.open(url, "_blank", "width=420,height=400");
+    dp.clearSelection();
+  };
 
-  // 6) Завантажуємо дані через AJAX
+  dp.onEventClicked = function (args) {
+    const url = `edit.php?id=${args.e.id()}`;
+    window.open(url, "_blank", "width=420,height=460");
+  };
+
+  /* 4. AJAX-завантаження ресурсів (rooms) та подій (reservations) */
   $.when(
     $.getJSON("load_rooms.php"),
     $.getJSON("load_reservations.php")
-  ).done(function(roomsData, reservationsData) {
-    var rooms  = roomsData[0];
-    var events = reservationsData[0];
+  ).done(function (roomsData, reservationsData) {
 
-    // 7) Мапимо масив кімнат у формат, потрібний Scheduler-у
-    dp.resources = rooms.map(function(r) {
-      return {
-        id:   r.id.toString(),
-        name: r.name + " (" + r.capacity + " місць)"
-      };
-    });
+      /* 4.1 Кімнати → dp.resources */
+      dp.resources = roomsData[0].map(r => ({
+        id:   String(r.id),
+        name: `${r.name} (${r.capacity} місць)`,
+        tags: r
+      }));
 
-    // 8) Мапимо масив бронювань у формат DayPilot-ів
-    dp.events.list = events.map(function(e) {
-      return {
-        id:        e.id.toString(),
-        resource:  e.resource.toString(),
+      /* 4.2 Бронювання → dp.events.list */
+      dp.events.list = reservationsData[0].map(e => ({
+        id:        String(e.id),
+        resource:  String(e.resource),
         start:     e.start,
         end:       e.end,
         text:      e.text,
         barColor:  e.barColor
-      };
-    });
+      }));
 
-    // 9) Оновлюємо Scheduler правильною інформацією
-    dp.update();
+      /* 5. Останнім кроком — ініціалізуємо Scheduler один раз */
+      dp.init();
 
-    dp.onTimeRangeSelected = function(args) {
-      var url = "new.php?start=" + args.start + "&end=" + args.end + "&resource=" + args.resource;
-      window.open(url, "_blank", "width=420,height=400");
-      dp.clearSelection();
-    };
-
-    dp.onEventClicked = function(args) {
-      var url = "edit.php?id=" + args.e.id();
-      window.open(url, "_blank", "width=420,height=460");
-    };
-
-  }).fail(function() {
-    alert("Не вдалося завантажити дані з сервера.");
+  }).fail(function () {
+      alert("Не вдалося завантажити дані з сервера.");
   });
+
 });

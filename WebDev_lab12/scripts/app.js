@@ -181,7 +181,6 @@
   app.getForecast = function(key, label) {
     // Use local static data instead of remote API
     var url = 'data/forecast.json';
-    // TODO add cache logic here
     if ('caches' in window) {
       /*
        * Check if the service worker has already cached this city's weather
@@ -225,11 +224,12 @@
   app.updateForecasts = function() {
     var keys = Object.keys(app.visibleCards);
     keys.forEach(function(key) {
-      app.getForecast(key);
+      var card = app.visibleCards[key];
+      var label = card ? card.querySelector('.location').textContent : '';
+      app.getForecast(key, label);
     });
   };
 
-  // TODO add saveSelectedCities function here
   // Save list of cities to localStorage.
   app.saveSelectedCities = function() {
     var selectedCities = JSON.stringify(app.selectedCities);
@@ -340,7 +340,7 @@
       }
     }
   };
-  // TODO uncomment line below to test app with fake data
+  // Uncomment line below to test app with fake data
   // app.updateForecastCard(initialWeatherForecast);
 
   /************************************************************************
@@ -354,7 +354,6 @@
    *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
    ************************************************************************/
 
-  // TODO add startup code here
   app.selectedCities = localStorage.selectedCities;
   if (app.selectedCities) {
     app.selectedCities = JSON.parse(app.selectedCities);
@@ -374,7 +373,6 @@
     app.saveSelectedCities();
   }
 
-  // TODO add service worker code here
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
              .register('./service-worker.js')

@@ -1,0 +1,5 @@
+/* Minimal DayPilot scheduler styles placeholder */
+.scheduler_default_main{font-family:Arial,Helvetica,sans-serif;font-size:12px;}
+.scheduler_default_rowheader,.scheduler_default_timeheader{background:#ffffff;border:1px solid #ccc;}
+.scheduler_default_event{background:#3d85c6;color:#fff;border-radius:2px;padding:2px;}
+

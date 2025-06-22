@@ -8,9 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Лаб.10: Клієнтська логіка — HTML5 Бронювання кімнат</title>
 
-  <!-- DayPilot CSS (протокол-агностик, без https:) -->
-  <link rel="stylesheet"
-        href="//cdn.daypilot.org/latest/daypilot-all.min.css" />
+  <!-- DayPilot CSS -->
+  <link rel="stylesheet" href="https://cdn.daypilot.org/daypilot-all.min.css" />
 
   <!-- Власні стилі -->
   <link rel="stylesheet" href="css/style.css">
@@ -46,10 +45,9 @@
     </address>
   </footer>
 
-  <!-- jQuery (без integrity, щоб не блокувався) -->
-  <script src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- DayPilot JS (протокол-агностик) -->
-  <script src="//cdn.daypilot.org/latest/daypilot-all.min.js"></script>
+  <!-- jQuery та DayPilot з локальної папки -->
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/daypilot-all.min.js"></script>
   <!-- Ваша клієнтська логіка -->
   <script src="js/app.js"></script>
 

@@ -1,8 +1,14 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-require 'db.php';
+// завантаження списку кімнат у форматі JSON
+require_once __DIR__ . '/_db.php';
 
-$stmt = $pdo->query("SELECT id, name, capacity, status FROM rooms");
-$rooms = $stmt->fetchAll();
+try {
+    $stmt = $db->query("SELECT id, name, capacity, status FROM rooms ORDER BY name");
+    $rooms = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo json_encode($rooms);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($rooms);
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
+}

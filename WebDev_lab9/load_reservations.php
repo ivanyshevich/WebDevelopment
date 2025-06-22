@@ -1,33 +1,32 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
-require 'db.php';
+// завантаження бронювань у заданому інтервалі
+require_once __DIR__ . '/_db.php';
 
-$stmt = $pdo->query("
-  SELECT id, name, start, end, room_id, status, paid
-  FROM reservations
-");
-$res = [];
-while ($row = $stmt->fetch()) {
-  // перетворюємо назви полів на ті, що розуміє DayPilot
-  $res[] = [
-    'id'       => $row['id'],
-    'resource' => $row['room_id'],
-    'start'    => $row['start'],
-    'end'      => $row['end'],
-    'text'     => $row['name'].' ('.$row['status'].')',
-    'barColor' => getBarColor($row['status']),  // функція підбірки кольору за статусом
-  ];
-}
-echo json_encode($res);
+// отримуємо діапазон (у режимі AJAX це POST, для тесту можна GET)
+$start = $_REQUEST['start'] ?? date('Y-m-01');
+$end   = $_REQUEST['end']   ?? date('Y-m-t');
 
-// допоміжна функція для статусів
-function getBarColor($status) {
-  switch ($status) {
-    case 'Arrived':      return 'green';
-    case 'Confirmed':    return 'blue';
-    case 'Checked out':  return 'gray';
-    case 'Expired':      return 'red';
-    case 'New':          return 'orange';
-    default:             return 'silver';
-  }
+try {
+    $stmt = $db->prepare("
+        SELECT id, name, start, `end`, room_id AS resource, status, paid
+        FROM reservations
+        WHERE NOT ((`end` <= :start) OR (`start` >= :end))
+    ");
+    $stmt->execute([':start' => $start, ':end' => $end]);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    /* додаємо поле bubbleHtml і колір */
+    $events = [];
+    foreach ($rows as $r) {
+        $r['bubbleHtml'] = "Reservation details: {$r['name']}";
+        // можна за status підбирати barColor, наприклад:
+        $r['barColor'] = ($r['status'] === 'New') ? 'orange' : 'gray';
+        $events[] = $r;
+    }
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($events);
+} catch (Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
 }
